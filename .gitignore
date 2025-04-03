@@ -1,4 +1,5 @@
 rendered/
+!rendered/.gitkeep
 *.tfvars
 !*.tfvars.example
 .terraform/

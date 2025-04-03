@@ -1,0 +1,15 @@
+# Copy to terraform.tfvars and fill in real values.
+
+proxmox_endpoint = "https://192.168.1.2:8006"
+proxmox_username = "terraform@pve"
+proxmox_password = "changeme"
+proxmox_node     = "pve"
+
+network_bridge  = "vmbr0"
+network_gateway = "192.168.1.1"
+
+lxc_template = "local:vztmpl/debian-12-standard_12.7-1_amd64.tar.zst"
+
+ssh_public_keys = [
+  "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIExampleKeyReplaceWithYourPublicKey user@host",
+]
