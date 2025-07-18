@@ -1,0 +1,8 @@
+rendered/
+!rendered/.gitkeep
+*.tfvars
+!*.tfvars.example
+.terraform/
+.terraform.lock.hcl
+*.tfstate
+*.tfstate.backup
