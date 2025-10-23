@@ -1,5 +1,5 @@
 # labmox
-Home lab services and scripts
+Repo for packages/libraries, services that are used across my apps. Also contains the IaaC for my homelab.
 
 ## Folders
 ### Infra
