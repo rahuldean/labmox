@@ -1,0 +1,35 @@
+name: ai-property-inspector-service
+
+on:
+  push:
+    paths:
+      - "services/ai-property-inspector-service/**"
+  pull_request:
+    paths:
+      - "services/ai-property-inspector-service/**"
+
+defaults:
+  run:
+    working-directory: services/ai-property-inspector-service
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.22"
+
+      - name: Build
+        run: go build ./...
+
+      - name: Vet
+        run: go vet ./...
+
+      - name: Test
+        run: go test ./...
+
+      - name: Docker build
+        run: docker build -t ai-property-inspector-service .

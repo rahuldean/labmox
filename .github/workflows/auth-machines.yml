@@ -1,0 +1,37 @@
+name: auth-machines
+
+on:
+  push:
+    paths:
+      - "libraries/auth-machines/**"
+  pull_request:
+    paths:
+      - "libraries/auth-machines/**"
+
+defaults:
+  run:
+    working-directory: libraries/auth-machines
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: libraries/auth-machines/package-lock.json
+
+      - name: Install
+        run: npm ci
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Test
+        run: npm test
+
+      - name: Build
+        run: npm run build
