@@ -68,6 +68,7 @@ func encodeImageToDataURI(path string) (string, error) {
 // sendChat sends a request to the LiteLLM proxy and returns the raw
 // text content from the model's response. Retries on 5xx/429 with
 // exponential backoff.
+// TODO: Support streaming
 func (c *Client) sendChat(ctx context.Context, systemPrompt string, parts []contentPart) (string, error) {
 	messages := []chatMessage{
 		{Role: "system", Content: systemPrompt},

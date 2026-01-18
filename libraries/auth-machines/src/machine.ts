@@ -32,6 +32,7 @@ export const emailPasswordMachine = setup({
   },
   guards: {
     // check against maxRetries - 1 because we increment AFTER this guard runs
+    // TODO: smarter retry
     canRetry: ({ context }) => context.retryCount < context.maxRetries - 1,
     isLocked: ({ context }) =>
       context.lockoutUntil !== null && Date.now() < context.lockoutUntil,
