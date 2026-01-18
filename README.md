@@ -1,6 +1,11 @@
 # labmox
 Repo for packages/libraries, services that are used across my apps. Also contains the IaaC for my homelab.
 
+## Workflow Status
+[![ai-property-inspector-service](https://github.com/rahuldean/labmox/actions/workflows/ai-property-inspector.yml/badge.svg?branch=main)](https://github.com/rahuldean/labmox/actions/workflows/ai-property-inspector.yml)
+
+[![auth-machines](https://github.com/rahuldean/labmox/actions/workflows/auth-machines.yml/badge.svg?branch=main)](https://github.com/rahuldean/labmox/actions/workflows/auth-machines.yml)
+
 ## Folders
 ### Infra
 IaaC code for homelab, apps and services.
