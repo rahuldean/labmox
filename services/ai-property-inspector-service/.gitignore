@@ -1,0 +1,4 @@
+.env
+testdata/*.jpg
+testdata/*.png
+testdata/*.webp
