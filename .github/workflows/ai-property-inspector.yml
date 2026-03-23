@@ -1,6 +1,7 @@
 name: ai-property-inspector-service
 
 on:
+  workflow_dispatch:
   push:
     paths:
       - "services/ai-property-inspector-service/**"

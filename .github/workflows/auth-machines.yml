@@ -1,6 +1,7 @@
 name: auth-machines
 
 on:
+  workflow_dispatch:
   push:
     paths:
       - "libraries/auth-machines/**"
