@@ -16,8 +16,13 @@ import (
 
 // chatRequest is the OpenAI-compatible request body that LiteLLM expects.
 type chatRequest struct {
-	Model    string        `json:"model"`
-	Messages []chatMessage `json:"messages"`
+	Model          string          `json:"model"`
+	Messages       []chatMessage   `json:"messages"`
+	ResponseFormat *responseFormat `json:"response_format,omitempty"`
+}
+
+type responseFormat struct {
+	Type string `json:"type"`
 }
 
 type chatMessage struct {
@@ -76,8 +81,9 @@ func (c *Client) sendChat(ctx context.Context, systemPrompt string, parts []cont
 	}
 
 	body := chatRequest{
-		Model:    c.model,
-		Messages: messages,
+		Model:          c.model,
+		Messages:       messages,
+		ResponseFormat: &responseFormat{Type: "json_object"},
 	}
 
 	payload, err := json.Marshal(body)
@@ -153,8 +159,26 @@ func (c *Client) sendChat(ctx context.Context, systemPrompt string, parts []cont
 			return "", fmt.Errorf("empty response from model %s", c.model)
 		}
 
-		return chatResp.Choices[0].Message.Content, nil
+		return stripCodeFences(chatResp.Choices[0].Message.Content), nil
 	}
 
 	return "", fmt.Errorf("all %d retries exhausted: %w", c.maxRetries, lastErr)
+}
+
+// stripCodeFences removes markdown code fences that models sometimes
+// wrap around JSON despite being told not to.
+func stripCodeFences(s string) string {
+	s = strings.TrimSpace(s)
+	if strings.HasPrefix(s, "```") {
+		// Remove opening fence (```json or just ```)
+		if idx := strings.Index(s, "\n"); idx != -1 {
+			s = s[idx+1:]
+		}
+		// Remove closing fence
+		if idx := strings.LastIndex(s, "```"); idx != -1 {
+			s = s[:idx]
+		}
+		s = strings.TrimSpace(s)
+	}
+	return s
 }
