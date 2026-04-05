@@ -12,7 +12,7 @@ export const emailPasswordMachine = setup({
     events: {} as EmailPasswordEvent,
   },
   actors: {
-    // override these with .provide() — they throw by default so you
+    // override these with .provide() - they throw by default so you
     // know immediately if you forgot to wire up your actual auth calls
     submitCredentials: fromPromise<
       { mfaRequired: boolean },

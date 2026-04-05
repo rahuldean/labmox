@@ -66,7 +66,7 @@ variable "unprivileged" {
 variable "features_nesting" {
   type        = bool
   default     = false
-  description = "Enable LXC nesting — required when running Docker inside LXC"
+  description = "Enable LXC nesting - required when running Docker inside LXC"
 }
 
 variable "start_on_boot" {

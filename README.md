@@ -10,7 +10,7 @@ Repo for packages/libraries, services that are used across my apps. Also contain
 ### Infra
 IaaC code for homelab, apps and services.
 
-* `infrastructure/homelab` - OpenTofu config for spinning up a Proxmox homelab. Deploys LXC containers on a single node — a reverse proxy, DNS server, Docker host, and NAS.
+* `infrastructure/homelab` - OpenTofu config for spinning up a Proxmox homelab. Deploys LXC containers on a single node - a reverse proxy, DNS server, Docker host, and NAS.
 
 ### Libraries
 Shared libraries or packages that are used across my apps/services. Some services/packages will be moved to an open repo soon.

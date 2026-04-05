@@ -40,5 +40,5 @@ output "openmediavault_id" {
 
 output "caddyfile_path" {
   value       = "${path.root}/rendered/Caddyfile"
-  description = "Local path to the rendered Caddyfile — scp this to /etc/caddy/Caddyfile on the proxy LXC"
+  description = "Local path to the rendered Caddyfile - scp this to /etc/caddy/Caddyfile on the proxy LXC"
 }

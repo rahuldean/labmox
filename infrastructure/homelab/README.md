@@ -1,6 +1,6 @@
 # homelab-infra
 
-OpenTofu config for spinning up a Proxmox homelab. Deploys LXC containers on a single node — a reverse proxy, DNS server, Docker host, and NAS.
+OpenTofu config for spinning up a Proxmox homelab. Deploys LXC containers on a single node - a reverse proxy, DNS server, Docker host, and NAS.
 
 
 ## Prerequisites
@@ -11,7 +11,7 @@ OpenTofu config for spinning up a Proxmox homelab. Deploys LXC containers on a s
    - Log in to Proxmox web UI
    - User management → Create a user (e.g., `terraform@pve`) or use an existing user
    - API tokens → Create a token for that user
-   - Keep the token secret — you'll need it for `terraform.tfvars`
+   - Keep the token secret - you'll need it for `terraform.tfvars`
 
 3. **LXC template in Proxmox**. Download a Debian 12 template:
    - Proxmox web UI → Datacenter → Content
@@ -29,13 +29,13 @@ cp terraform.tfvars.example terraform.tfvars
 ```
 
 Open `terraform.tfvars` and fill in:
-- `proxmox_endpoint` — IP and port of your Proxmox host (e.g., `https://192.168.1.2:8006`)
-- `proxmox_username` — API user (e.g., `terraform@pve`)
-- `proxmox_password` — API token or password
-- `proxmox_node` — Name of the Proxmox node (usually `pve`)
-- `network_gateway` — Your router/gateway IP (e.g., `192.168.1.1`)
-- `lxc_template` — Full path to the Debian 12 template in Proxmox
-- `ssh_public_keys` — Your SSH public key(s) (optional)
+- `proxmox_endpoint` - IP and port of your Proxmox host (e.g., `https://192.168.1.2:8006`)
+- `proxmox_username` - API user (e.g., `terraform@pve`)
+- `proxmox_password` - API token or password
+- `proxmox_node` - Name of the Proxmox node (usually `pve`)
+- `network_gateway` - Your router/gateway IP (e.g., `192.168.1.1`)
+- `lxc_template` - Full path to the Debian 12 template in Proxmox
+- `ssh_public_keys` - Your SSH public key(s) (optional)
 
 ### 2. Initialize and Plan
 
@@ -68,11 +68,11 @@ See `docs/apply-caddyfile.md` for more details.
 
 ## Key Files
 
-- **`modules/lxc/`** — Reusable module for provisioning any LXC container. Handles CPU, memory, disk, networking, and SSH keys.
+- **`modules/lxc/`** - Reusable module for provisioning any LXC container. Handles CPU, memory, disk, networking, and SSH keys.
 
-- **`*.tf` at root** — One file per service (`proxy.tf`, `pihole.tf`, `docker.tf`, `openmediavault.tf`). Each defines IP, sizing, and container config via `locals`. Services are instantiated with the `module "lxc"` block.
+- **`*.tf` at root** - One file per service (`proxy.tf`, `pihole.tf`, `docker.tf`, `openmediavault.tf`). Each defines IP, sizing, and container config via `locals`. Services are instantiated with the `module "lxc"` block.
 
-- **`templates/Caddyfile.tpl`** — Caddy reverse proxy config, templated with IPs and ports at apply time. Rendered to `rendered/Caddyfile` and manually pushed to the proxy container.
+- **`templates/Caddyfile.tpl`** - Caddy reverse proxy config, templated with IPs and ports at apply time. Rendered to `rendered/Caddyfile` and manually pushed to the proxy container.
 
 ## Tips
 
@@ -82,7 +82,7 @@ See `docs/apply-caddyfile.md` for more details.
 
 - **SSH into containers**: All containers get your SSH key if you provide it in `terraform.tfvars`. Then `ssh root@192.168.1.XX`.
 
-- **Destroy everything**: `tofu destroy` — containers are deleted from Proxmox.
+- **Destroy everything**: `tofu destroy` - containers are deleted from Proxmox.
 
 ## Troubleshooting
 

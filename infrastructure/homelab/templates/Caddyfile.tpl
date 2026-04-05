@@ -1,4 +1,4 @@
-# Rendered by OpenTofu — push to /etc/caddy/Caddyfile on the proxy LXC.
+# Rendered by OpenTofu - push to /etc/caddy/Caddyfile on the proxy LXC.
 # See docs/apply-caddyfile.md for instructions.
 
 immich.home {

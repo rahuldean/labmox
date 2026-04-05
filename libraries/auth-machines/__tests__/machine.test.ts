@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { createActor, fromPromise } from 'xstate';
 import { emailPasswordMachine } from '../src/machine.js';
 
-// helper — creates a machine with fake auth that you control
+// helper - creates a machine with fake auth that you control
 function machineWith(opts: {
   login?: () => Promise<{ mfaRequired: boolean }>;
   mfa?: () => Promise<void>;
