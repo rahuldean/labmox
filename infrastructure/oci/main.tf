@@ -132,6 +132,16 @@ resource "cloudflare_zero_trust_tunnel_cloudflared_config" "main" {
     }
     ingress_rule {
       hostname = "coolify.labmox.com"
+      path     = "/terminal/ws"
+      service  = "http://localhost:6002"
+    }
+    ingress_rule {
+      hostname = "coolify.labmox.com"
+      path     = "/app"
+      service  = "http://localhost:6001"
+    }
+    ingress_rule {
+      hostname = "coolify.labmox.com"
       service  = "http://localhost:8000"
     }
     # Required catch-all
