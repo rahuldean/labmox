@@ -1,3 +1,4 @@
+# ── OCI ──────────────────────────────────────────────────────────────────────
 tenancy_ocid     = "ocid1.tenancy.oc1..xxxx"
 user_ocid        = "ocid1.user.oc1..xxxx"
 fingerprint      = "xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx"
@@ -5,4 +6,16 @@ private_key_path = "~/.oci/oci_api_key.pem"
 region           = "us-ashburn-1"
 compartment_ocid = "ocid1.tenancy.oc1..xxxx"
 image_ocid       = "ocid1.image.oc1.iad.xxxx"
-ssh_public_key   = "ssh-ed25519 AAAA..."
+
+# ── Cloudflare ────────────────────────────────────────────────────────────────
+# API token needs: Zone:DNS:Edit, Account:Cloudflare Tunnel:Edit,
+#                  Account:Access: Apps and Policies:Edit,
+#                  Access: Service Tokens:Edit
+cloudflare_api_token  = "your-cloudflare-api-token"
+cloudflare_account_id = "your-32-char-account-id"
+cloudflare_zone_id    = "your-32-char-zone-id"
+
+# Generate with: openssl rand -base64 32
+tunnel_secret = "base64-encoded-32-byte-random-secret"
+
+admin_email = "you@example.com"
