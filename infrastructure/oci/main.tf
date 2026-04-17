@@ -137,7 +137,7 @@ resource "cloudflare_zero_trust_tunnel_cloudflared_config" "main" {
     }
     ingress_rule {
       hostname = "coolify.labmox.com"
-      path     = "/app"
+      path     = "^/app"
       service  = "http://localhost:6001"
     }
     ingress_rule {
