@@ -128,7 +128,7 @@ resource "cloudflare_zero_trust_tunnel_cloudflared_config" "main" {
   config {
     ingress_rule {
       hostname = "aigw.labmox.com"
-      service  = "http://localhost:4000"
+      service  = "http://localhost:8050"
     }
     ingress_rule {
       hostname = "coolify.labmox.com"
