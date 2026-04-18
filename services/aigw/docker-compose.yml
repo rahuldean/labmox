@@ -7,4 +7,6 @@ services:
       LITELLM_MASTER_KEY: ${LITELLM_MASTER_KEY}
       LITELLM_SALT_KEY: ${LITELLM_SALT_KEY}
       STORE_MODEL_IN_DB: "True"
-    command: ["--port", "4000"]
+    command: ["--port", "8080"]
+    ports:
+      - "8050:8080"

@@ -185,6 +185,7 @@ resource "cloudflare_zero_trust_access_service_token" "api_client" {
   min_days_for_renewal = 30
 }
 
+# allow service token to access the aigw
 resource "cloudflare_zero_trust_access_policy" "api_service_token" {
   account_id     = var.cloudflare_account_id
   application_id = cloudflare_zero_trust_access_application.api.id
@@ -194,6 +195,19 @@ resource "cloudflare_zero_trust_access_policy" "api_service_token" {
 
   include {
     service_token = [cloudflare_zero_trust_access_service_token.api_client.id]
+  }
+}
+
+# allow admin email to access the aigw
+resource "cloudflare_zero_trust_access_policy" "api_admin_email" {
+  account_id     = var.cloudflare_account_id
+  application_id = cloudflare_zero_trust_access_application.api.id
+  name           = "Admin Email"
+  precedence     = 2
+  decision       = "allow"
+
+  include {
+    email = [var.admin_email]
   }
 }
 
