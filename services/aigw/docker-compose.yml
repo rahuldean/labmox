@@ -7,6 +7,4 @@ services:
       LITELLM_MASTER_KEY: ${LITELLM_MASTER_KEY}
       LITELLM_SALT_KEY: ${LITELLM_SALT_KEY}
       STORE_MODEL_IN_DB: "True"
-    command: ["--port", "4000", "--config", "/app/config.yaml"]
-    volumes:
-      - ./litellm-config.yaml:/app/config.yaml:ro
+    command: ["--port", "4000"]
