@@ -172,11 +172,12 @@ resource "cloudflare_record" "coolify" {
 # ── Cloudflare Access — Service Token (aigw.labmox.com) ──────────────────────
 
 resource "cloudflare_zero_trust_access_application" "api" {
-  account_id       = var.cloudflare_account_id
-  name             = "aigw"
-  domain           = "aigw.labmox.com"
-  type             = "self_hosted"
-  session_duration = "24h"
+  account_id        = var.cloudflare_account_id
+  name              = "aigw"
+  domain            = "aigw.labmox.com"
+  type              = "self_hosted"
+  session_duration  = "24h"
+  skip_interstitial = true
 }
 
 resource "cloudflare_zero_trust_access_service_token" "api_client" {
@@ -191,7 +192,7 @@ resource "cloudflare_zero_trust_access_policy" "api_service_token" {
   application_id = cloudflare_zero_trust_access_application.api.id
   name           = "Service Token"
   precedence     = 1
-  decision       = "allow"
+  decision       = "non_identity"
 
   include {
     service_token = [cloudflare_zero_trust_access_service_token.api_client.id]
